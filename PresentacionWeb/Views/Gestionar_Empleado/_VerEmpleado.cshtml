@@ -1,0 +1,120 @@
+﻿@model Dominio.Empleado
+
+<div id="VerEmpleado">
+    <h4>Empleado</h4>
+    <hr />
+    <div class="form-group" style="display:none">
+        @Html.LabelFor(model => model.Id_Empleado, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Id_Empleado, new { htmlAttributes = new { @class = "form-control", @id = "Id_Empleado" } })
+            @Html.ValidationMessageFor(model => model.Id_Empleado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        @*<dt>
+                @Html.DisplayNameFor(model => model.DNI)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DNI)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoCivil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradoAcademico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradoAcademico)
+        </dd>
+
+
+    </dl>
+
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <button id="crearContrato" class="btn btn-primary btn-anim"><i class="pe-7s-search"></i><span class="btn-text">Crear Contrato</span></button>
+        </div>
+        <div class="col-auto">
+            <button id="ediContrato" class="btn btn-primary btn-anim"><i class="pe-7s-search"></i><span class="btn-text">Editar Contrato</span></button>
+        </div>
+        <div class="col-auto">
+            <button id="anuConrato" class="btn btn-primary btn-anim"><i class="pe-7s-search"></i><span class="btn-text">Anular Contrato</span></button>
+        </div>
+        @*<div class="col-auto">
+                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">@</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="custom-control custom-checkbox mb-2">
+                    <input type="checkbox" class="custom-control-input" id="autoSizingCheck">
+                    <label class="custom-control-label" for="autoSizingCheck">Remember me</label>
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            </div>*@
+    </div>
+</div>
+
+<script>
+    $("#pnlGrilla #VerEmpleado").on("click", "#crearContrato", function (e) {
+        e.preventDefault();
+        CrearContrato();
+    });
+
+    $("#pnlGrilla #VerEmpleado").on("click", "#ediContrato", function (e) {
+        e.preventDefault();
+        EditarContrato();
+    });
+    $("#pnlGrilla #VerEmpleado").on("click", "#anuConrato", function (e) {
+        e.preventDefault();
+        VistaAnularContrato();
+    });
+</script>
+

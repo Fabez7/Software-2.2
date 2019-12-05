@@ -1,0 +1,111 @@
+﻿
+@model Dominio.Contrato
+@using Dominio
+@using Aplicacion
+
+@using (Html.BeginForm("RegistrarContrato", "Contrato", FormMethod.Post, new { enctype = "multipart/form-data", role = "form", id = "frmRegCon", name = "frmRegCon" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Contrato</h4>
+        <hr />
+
+        @*<div class="form-group hidden">
+                @Html.LabelFor(model => model.Anulado, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Anulado)
+                        @Html.ValidationMessageFor(model => model.Anulado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
+        <div style="display:none">
+            <input id="Id_Empleado" value="@ViewBag.Empleado" />
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control", @id = "FechaInicio" } })
+                @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaFin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "form-control", @id = "FechaFin" } })
+                @Html.ValidationMessageFor(model => model.FechaFin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @{List<Cargo> lstCargo = Gestionar_Cargo_Servicio.Instancia.ListarCargo();
+            <div class="form-group">
+                <label class="control-label col-md-2">Cargo</label>
+                <div class="col-md-10">
+                    <select id="Id_Cargo" class="form-control">
+                        @foreach (Cargo cargo in lstCargo)
+                        {
+                            <option value="@cargo.Id_Cargo">@cargo.Nombre</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+        }
+
+        @{List<AFP> lstAFP = Gestionar_AFP_Servicio.Instancia.ListarAFP();
+            <div class="form-group">
+                <label class="control-label col-md-2">AFP</label>
+                <div class="col-md-10">
+                    <select id="Id_AFP" class="form-control">
+                        @foreach (AFP cargo in lstAFP)
+                        {
+                            <option value="@cargo.Id_AFP">@cargo.Nombre</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AsignacionFamiliar, "Asignacion Familiar", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="AsignacionFamiliar" class="form-control">
+                    <option>NO</option>
+                    <option>SI</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HorasContratadas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HorasContratadas, new { htmlAttributes = new { @class = "form-control", @id = "HorasContratadas" } })
+                @Html.ValidationMessageFor(model => model.HorasContratadas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ValorHora, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ValorHora, new { htmlAttributes = new { @class = "form-control", @id = "ValorHora" } })
+                @Html.ValidationMessageFor(model => model.ValorHora, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-auto">
+                <button id="regContrato" class="btn btn-success btn-anim"><i class="pe-7s-search"></i><span class="btn-text">Guardar</span></button>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $("#frmRegCon").on("click", "#regContrato", function (e) {
+        e.preventDefault();
+        RegistrarContrato();
+    })
+</script>
+

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Dominio.BoletaPago>
+
+<table class="table">
+    <tr>
+        <th>Cod Emp</th>
+        <th>Nom Emp</th>
+        <th>DNI</th>
+        <th>
+            Total de Horas
+        </th>
+        <th>
+            Valor Hora
+        </th>
+        <th>Sueldo básico</th>
+        <th>
+            Total de Ingresos
+        </th>
+        <th>
+            Total Descuentos
+        </th>
+        <th>
+            Sueldo Neto
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Contrato.Empleado.Id_Empleado
+            </td>
+            <td>
+                @item.Contrato.Empleado.Nombre
+            </td>
+            <td>
+                @item.Contrato.Empleado.DNI
+            </td>
+            <td>
+                @item.TotalHoras
+            </td>
+            <td>
+                @item.ValorHora
+            </td>
+            <td>
+                @item.CalcularSueldoBasico()
+            </td>
+            <td>
+                @item.CalcularTotalIngresos()
+            </td>
+            <td>
+                @item.CalcularTotalDescuentos()
+            </td>
+            <td>@item.CalcularSueldoNeto()</td>
+        </tr>
+    }
+
+</table>

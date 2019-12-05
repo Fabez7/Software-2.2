@@ -1,0 +1,135 @@
+﻿@model Dominio.Contrato
+
+@using Dominio
+@using Aplicacion
+
+@using (Html.BeginForm("ActualizarContrato", "Gestionar_Contrato", FormMethod.Post, new { enctype = "multipart/form-data", role = "form", id = "frmActCon", name = "frmActCon" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Editar Contrato</h4>
+        <hr />
+        <div style="display:none">
+            <input id="Id_Empleado" value="@ViewBag.Empleado" />
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group" style="display:none">
+            @Html.LabelFor(model => model.Id_Contrato, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id_Contrato, new { htmlAttributes = new { @class = "form-control", @id="EId_Contrato" } })
+                @Html.ValidationMessageFor(model => model.Id_Contrato, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control", @id = "EFechaInicio" } })
+                @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaFin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "form-control", @id = "EFechaFin" } })
+                @Html.ValidationMessageFor(model => model.FechaFin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @{List<Cargo> lstCargo = Gestionar_Cargo_Servicio.Instancia.ListarCargo();
+            <div class="form-group">
+                <label class="control-label col-md-2">Cargo</label>
+                <div class="col-md-10">
+                    <select id="EId_Cargo" class="form-control">
+                        @foreach (Cargo cargo in lstCargo)
+                        {
+                            if (Model.Cargo.Id_Cargo == cargo.Id_Cargo)
+                            {
+                                <option value="@cargo.Id_Cargo" selected>@cargo.Nombre</option>
+                            }
+                            else
+                            {
+                                <option value="@cargo.Id_Cargo">@cargo.Nombre</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+        }
+
+        @{List<AFP> lstAFP = Gestionar_AFP_Servicio.Instancia.ListarAFP();
+            <div class="form-group">
+                <label class="control-label col-md-2">AFP</label>
+                <div class="col-md-10">
+                    <select id="EId_AFP" class="form-control">
+                        @foreach (AFP aFP in lstAFP)
+                        {
+                            if (Model.AFP.Id_AFP == aFP.Id_AFP)
+                            {
+                                <option value="@aFP.Id_AFP" selected>@aFP.Nombre</option>
+                            }
+                            else
+                            {
+                                <option value="@aFP.Id_AFP">@aFP.Nombre</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AsignacionFamiliar, "Asignacion Familiar", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="EAsignacionFamiliar" class="form-control">
+                    @if (Model.AsignacionFamiliar == true)
+                    {
+                        <option selected>SI</option>
+                        <option>NO</option>
+                    }
+                    else
+                    {
+                        <option selected>NO</option>
+                        <option>SI</option>
+                    }
+
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HorasContratadas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HorasContratadas, new { htmlAttributes = new { @class = "form-control", @id = "EHorasContratadas" } })
+                @Html.ValidationMessageFor(model => model.HorasContratadas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ValorHora, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ValorHora, new { htmlAttributes = new { @class = "form-control", @id = "EValorHora" } })
+                @Html.ValidationMessageFor(model => model.ValorHora, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-auto">
+                <button id="updContrato" class="btn btn-success btn-anim"><i class="pe-7s-search"></i><span class="btn-text">Guardar</span></button>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $("#frmActCon").on("click", "#updContrato", function (e) {
+        e.preventDefault();
+        ActualizarContrato();
+    });
+</script>

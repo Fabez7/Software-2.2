@@ -1,0 +1,73 @@
+﻿@model Dominio.PeriodoPago
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="tab-content form-horizontal">
+            @using (Html.BeginForm("ProcesarPago", "Procesar_Pago", FormMethod.Post, new { enctype = "multipart/form-data", role = "form", id = "frmProPag", name = "frmProPag" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Procesar Pago</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.Id_PeriodoPago, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Id_PeriodoPago, new { htmlAttributes = new { @class = "form-control", @id = "Id_PeriodoPago" } })
+                            @Html.ValidationMessageFor(model => model.Id_PeriodoPago, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control", @readonly = "true", @id = "FechaInicio" } })
+                            @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FechaFin, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "form-control", @readonly = "true", @id = "FechaFin" } })
+                            @Html.ValidationMessageFor(model => model.FechaFin, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-auto">
+                            <button id="procPago" class="btn btn-success btn-anim"><i class="pe-7s-search"></i><span class="btn-text">Procesar</span></button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div id="pcrPago">
+
+        </div>
+
+        <!-- end row-->
+        <!-- end row-->
+    </div> <!-- container-fluid -->
+</div>
+<script>
+    $("#frmProPag").on("click", "#procPago", function (e) {
+        e.preventDefault();
+        ProcesarPago();
+    });
+</script>
+<script src="~/Scripts/Controllers/Pago.js"></script>

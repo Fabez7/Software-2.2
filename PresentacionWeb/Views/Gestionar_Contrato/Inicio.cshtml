@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="tab-content form-horizontal">
+            @using (Html.BeginForm("BuscarEmpleado", "Gestionar_Empleado", FormMethod.Post, new { id = "frmBuscar" }))
+            {
+                <br />
+                <h5 class="text">Buscar</h5>
+                <hr />
+                <div id="mostrarBuscarA">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">DNI</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" id="EDNI" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button id="btnBusEmp" class="btn btn-primary btn-anim"><i class="pe-7s-search"></i><span class="btn-text">Buscar</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="pnlGrilla"></div>
+                <div id="pnlcontrato"></div>
+            }
+        </div>
+
+        <!-- end row-->
+        <!-- end row-->
+    </div> <!-- container-fluid -->
+</div>
+
+<script src="~/Scripts/Controllers/Contrato.js"></script>

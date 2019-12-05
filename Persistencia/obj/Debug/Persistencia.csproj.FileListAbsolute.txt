@@ -1,0 +1,13 @@
+D:\Calidad\Proyecto OK\Persistencia\bin\Debug\Persistencia.dll
+D:\Calidad\Proyecto OK\Persistencia\bin\Debug\Persistencia.pdb
+D:\Calidad\Proyecto OK\Persistencia\bin\Debug\Dominio.dll
+D:\Calidad\Proyecto OK\Persistencia\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Calidad\Proyecto OK\Persistencia\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Calidad\Proyecto OK\Persistencia\bin\Debug\Dominio.pdb
+D:\Calidad\Proyecto OK\Persistencia\bin\Debug\Dominio.dll.config
+D:\Calidad\Proyecto OK\Persistencia\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\Calidad\Proyecto OK\Persistencia\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\Calidad\Proyecto OK\Persistencia\obj\Debug\Persistencia.csprojAssemblyReference.cache
+D:\Calidad\Proyecto OK\Persistencia\obj\Debug\Persistencia.csproj.CopyComplete
+D:\Calidad\Proyecto OK\Persistencia\obj\Debug\Persistencia.dll
+D:\Calidad\Proyecto OK\Persistencia\obj\Debug\Persistencia.pdb
